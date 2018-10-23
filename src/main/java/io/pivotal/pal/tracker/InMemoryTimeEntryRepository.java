@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class InMemoryTimeEntryRepository {
+public class InMemoryTimeEntryRepository implements  TimeEntryRepository{
 
     private static InMemoryTimeEntryRepository timeEntryRepository = null;
 
@@ -21,7 +21,12 @@ public class InMemoryTimeEntryRepository {
     }
 
     public TimeEntry find(long id) {
-        return this.items.get((int)id - 1);
+            long resultId = 0;
+            if (this.items.isEmpty() || id > this.items.size()) {
+                return null;
+            } else {
+                return this.items.get((int) id - 1);
+            }
     }
 
     public List<TimeEntry> list() {
@@ -64,6 +69,9 @@ public class InMemoryTimeEntryRepository {
     }
 
     public static InMemoryTimeEntryRepository getInstance() {
+        if (timeEntryRepository == null) {
+            timeEntryRepository = new InMemoryTimeEntryRepository();
+        }
         return timeEntryRepository;
     }
 }

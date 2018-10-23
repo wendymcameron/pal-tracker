@@ -4,24 +4,14 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
-public class TimeEntryRepository {
-    public ResponseEntity create(TimeEntry any) {
-        return null;
-    }
+public interface TimeEntryRepository {
+    public TimeEntry create(TimeEntry any);
 
-    public ResponseEntity<TimeEntry> find(long l) {
-        return null;
-    }
+    public TimeEntry find(long id);
 
-    public ResponseEntity<List<TimeEntry>> list() {
-        return null;
-    }
+    public List<TimeEntry> list();
 
-    public ResponseEntity update(long eq, TimeEntry any) {
-        return null;
-    }
+    public TimeEntry update(long eq, TimeEntry any);
 
-    public ResponseEntity<TimeEntry> delete(long l) {
-        return null;
-    }
+    public void delete(long l);
 }

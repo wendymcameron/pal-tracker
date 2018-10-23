@@ -74,6 +74,7 @@ public class TimeEntryControllerTest {
             new TimeEntry(1L, 123L, 456L, LocalDate.parse("2017-01-08"), 8),
             new TimeEntry(2L, 789L, 321L, LocalDate.parse("2017-01-07"), 4)
         );
+
         doReturn(expected).when(timeEntryRepository).list();
 
         ResponseEntity<List<TimeEntry>> response = controller.list();
@@ -86,6 +87,7 @@ public class TimeEntryControllerTest {
     @Test
     public void testUpdate() throws Exception {
         TimeEntry expected = new TimeEntry(1L, 987L, 654L, LocalDate.parse("2017-01-07"), 4);
+
         doReturn(expected)
             .when(timeEntryRepository)
             .update(eq(1L), any(TimeEntry.class));
