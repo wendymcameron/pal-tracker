@@ -22,7 +22,7 @@ public class InMemoryTimeEntryRepository implements  TimeEntryRepository{
 
     public TimeEntry find(long id) {
             long resultId = 0;
-            if (this.items.isEmpty() || id > this.items.size()) {
+            if (this.items.isEmpty() || id > this.items.size() || (int)id == 0) {
                 return null;
             } else {
                 return this.items.get((int) id - 1);
