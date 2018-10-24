@@ -20,21 +20,24 @@ public class InMemoryTimeEntryRepository implements  TimeEntryRepository{
         return this.items.get(this.items.size() - 1);
     }
 
-    public TimeEntry find(long id) {
+    @Override
+    public TimeEntry find(Long id) {
             long resultId = 0;
             if (this.items.isEmpty() || id > this.items.size() - 1 ) {
                 return null;
             } else {
-                return this.items.get((int) id);
+                return this.items.get(id.intValue());
             }
     }
 
+    @Override
     public List<TimeEntry> list() {
 
         return (List<TimeEntry>)  items;
     }
 
-    public TimeEntry update(long id, TimeEntry timeEntry) {
+    @Override
+    public TimeEntry update(Long id, TimeEntry timeEntry) {
         TimeEntry result = null;
         for (TimeEntry a : this.items) {
             if (a.getId() == id) {
@@ -50,7 +53,8 @@ public class InMemoryTimeEntryRepository implements  TimeEntryRepository{
         return timeEntry;
     }
 
-    public void delete(long id) {
+    @Override
+    public void delete(Long id) {
         TimeEntry result = null;
         for (TimeEntry a : this.items) {
             if (a.getId() == id) {
