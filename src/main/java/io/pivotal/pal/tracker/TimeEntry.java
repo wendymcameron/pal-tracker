@@ -94,7 +94,7 @@ public class TimeEntry {
         this.date = date;
         this.hours = hours;
         InMemoryTimeEntryRepository timeEntryRepository = InMemoryTimeEntryRepository.getInstance();
-        this.id = timeEntryRepository.list().size() + 1l;
+        this.id = timeEntryRepository.list().size();
     }
 
     public TimeEntry(long id, long projectId, long userId, LocalDate date, int hours) {
