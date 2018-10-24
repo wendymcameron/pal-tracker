@@ -1,5 +1,29 @@
 import org.flywaydb.gradle.task.FlywayMigrateTask
 
+buildscript {
+    repositories {
+        maven { url "http://platform-acceleration-lab-maven.s3.amazonaws.com" }
+        jcenter()
+    }
+
+    dependencies {
+        classpath "io.pivotal.pal.assignments:assignments-plugin:3.5.1"
+    }
+}
+
+apply plugin: "io.pivotal.pal.assignments.plugin"
+
+assignments {
+    apiUrl = "https://assignments.education.pivotal.io/"
+    emails = [
+            "wendy.cameron@hcl.com",
+            "p.j.santos@accenture.com",
+    ]
+    cohortIdentifier = "349802437"
+}
+
+defaultTasks "tasks"
+
 plugins {
     id "java"
     id "org.springframework.boot" version "1.5.4.RELEASE"
